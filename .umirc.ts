@@ -1,6 +1,7 @@
 import { defineConfig } from 'dumi'
 
 export default defineConfig({
-  title: 'Site Name',
+  title: 'newNote',
   mode: 'site',
+  locales: [['zh-CN', '中文']],
 })
