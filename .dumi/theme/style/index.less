@@ -1,0 +1,48 @@
+@import '~antd/dist/antd.css';
+
+html[data-prefers-color='dark'] {
+  @import '~antd/dist/antd.dark.less';
+}
+
+// Card内嵌Desc，优化边框显示，方案一
+//.markdown .ant-card .ant-descriptions-bordered {
+//  .ant-descriptions-view, table {
+//    border: none;
+//  }
+//
+//  .ant-descriptions-item-label {
+//    border-left: none
+//  }
+//
+//  .ant-descriptions-item-label {
+//    border-bottom: none;
+//  }
+//}
+
+// Card内嵌Desc，优化边框显示，方案二
+.markdown .ant-card-body {
+  overflow: hidden;
+
+  .ant-descriptions,
+  .ant-descriptions-bordered {
+    margin: -2px;
+  }
+}
+
+.ant-typography {
+  margin-bottom: 0 !important;
+}
+
+// 隐藏复制按钮，移入显示
+.ant-descriptions-item-label,
+.ant-descriptions-item-content {
+  .anticon.anticon-copy {
+    display: none;
+  }
+
+  :hover {
+    .anticon.anticon-copy {
+      display: inline-block;
+    }
+  }
+}

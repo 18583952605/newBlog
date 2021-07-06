@@ -21,9 +21,16 @@
     ]
   },
   "devDependencies": {
-    "dumi": "^1.0.13",
+    "dumi": "^1.1.23",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "yorkie": "^2.0.0"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "antd": "^4.16.6",
+    "copy-to-clipboard": "^3.3.1",
+    "react": "^16.14.0",
+    "react-markdown": "^6.0.2"
   }
 }
