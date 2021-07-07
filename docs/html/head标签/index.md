@@ -32,7 +32,7 @@ order: 2
   data="[{'label':'`<base target=’_blank‘ />`', 'desc': '网页所有链接为_blank方式打开'}]"
 />
 
-## 2.5 style 标签
+## style 标签
 
 ```html
 <style>
@@ -40,7 +40,7 @@ order: 2
 </style>
 ```
 
-## 2.6 script 标签
+## script 标签
 
 ```html
 <script type="text/javascript" src="index.js"></script>
@@ -49,5 +49,3 @@ order: 2
   ...
 </script>
 ```
-
-<Table></Table>
