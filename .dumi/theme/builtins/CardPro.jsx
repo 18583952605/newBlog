@@ -7,7 +7,12 @@ export default (props) => {
   let { size = '', type = 'table', title = '', data = '[]', showHeader = false } = props
 
   // 支持的字段
-  const attrs = ['label', 'desc', 'value']
+  const attrs = [
+    { key: 'label', label: '标签' },
+    { key: 'desc', label: '描述' },
+    { key: 'value', label: '值' },
+    { key: 'example', label: '示例' },
+  ]
 
   // 转换data
   data = str2Array(data) || []
@@ -16,9 +21,12 @@ export default (props) => {
   const firstItem = data[0] || {}
 
   // 给data里的字符串高亮
-  data = data.map((item) =>
-    attrs.reduce((o, i) => ({ ...o, [i]: firstItem[i] ? highlightText(item[i]) : null }), {}),
-  )
+  data = data.map((item) => {
+    return attrs.reduce(
+      (o, { key }) => ({ ...o, [key]: firstItem[key] ? highlightText(item[key]) : null }),
+      {},
+    )
+  })
 
   // 给title里的字符串高亮
   title = highlightText(title)
@@ -46,10 +54,12 @@ export default (props) => {
     table: () => {
       // 生成columns
       const columns = attrs
-        .map((item) => (firstItem[item] ? { title: item, dataIndex: item } : null))
+        .map(({ key, label }) => (firstItem[key] ? { title: label, dataIndex: key } : null))
         .filter((i) => i)
+
       // 给第一列40%的宽度
       columns[0].width = '40%'
+
       return (
         <Table
           size={size}

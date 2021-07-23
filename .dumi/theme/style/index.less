@@ -1,10 +1,16 @@
 @import '~antd/dist/antd.css';
 
+// 夜间模式
 html[data-prefers-color='dark'] {
   @import '~antd/dist/antd.dark.less';
 }
 
+// 优化CardPro
 .markdown {
+  .ant-card-head {
+    padding-left: 14px !important;
+  }
+
   .ant-card-body {
     overflow: hidden;
 
@@ -27,7 +33,6 @@ html[data-prefers-color='dark'] {
         border-bottom: none !important;
         border-left: none !important;
         border-right: none !important;
-        color: red !important;
       }
     }
   }
