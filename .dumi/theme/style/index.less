@@ -4,31 +4,36 @@ html[data-prefers-color='dark'] {
   @import '~antd/dist/antd.dark.less';
 }
 
-// Card内嵌Desc，优化边框显示，方案一
-//.markdown .ant-card .ant-descriptions-bordered {
-//  .ant-descriptions-view, table {
-//    border: none;
-//  }
-//
-//  .ant-descriptions-item-label {
-//    border-left: none
-//  }
-//
-//  .ant-descriptions-item-label {
-//    border-bottom: none;
-//  }
-//}
+.markdown {
+  .ant-card-body {
+    overflow: hidden;
 
-// Card内嵌Desc，优化边框显示，方案二
-.markdown .ant-card-body {
-  overflow: hidden;
+    // Card内嵌Desc，优化边框显示
+    .ant-descriptions,
+    .ant-descriptions-bordered {
+      margin: -2px;
+    }
 
-  .ant-descriptions,
-  .ant-descriptions-bordered {
-    margin: -2px;
+    // Card内嵌Table，优化边框显示
+    .ant-table-content > table {
+      border: none !important;
+
+      .ant-table-row .ant-table-cell:first-child {
+        background: #fafafa;
+      }
+
+      .ant-table-cell {
+        border-top: solid 0.5px #eee !important;
+        border-bottom: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        color: red !important;
+      }
+    }
   }
 }
 
+// 优化复制按钮的样式
 .ant-typography {
   margin-bottom: 0 !important;
 }
@@ -36,14 +41,15 @@ html[data-prefers-color='dark'] {
 // 隐藏复制按钮，移入显示
 .ant-descriptions-item-label,
 .ant-descriptions-item-content,
+.ant-table-cell,
 .ant-card-head-title {
   .anticon.anticon-copy {
-    display: none;
+    visibility: hidden;
   }
 
   :hover {
     .anticon.anticon-copy {
-      display: inline-block;
+      visibility: visible;
     }
   }
 }

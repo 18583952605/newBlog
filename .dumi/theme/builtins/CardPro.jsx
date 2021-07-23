@@ -1,59 +1,70 @@
 import React from 'react'
-import { Card, Descriptions, Typography } from 'antd'
+import { Card, Descriptions, Table } from 'antd'
+import { highlightText, str2Array } from '../tools'
 import '../style/index.less'
 
 export default (props) => {
-  let { size = '', type = 'descriptions', title = '', data = '[]' } = props
+  let { size = '', type = 'table', title = '', data = '[]', showHeader = false } = props
 
-  try {
-    data = JSON.parse(data.replaceAll(`'`, `"`))
-  } catch (err) {
-    console.error('JSON.parse失败', err, data)
-  }
+  // 支持的字段
+  const attrs = ['label', 'desc', 'value']
 
-  // 将字符串中`包含的部分`，增加颜色
-  const replace = (text = '') => {
-    let startOrEnd = false
+  // 转换data
+  data = str2Array(data) || []
 
-    const sourceText = text.trim().replaceAll('‘', '"').replaceAll('’', '"')
+  // 取第一个
+  const firstItem = data[0] || {}
 
-    const __html = sourceText.replaceAll('`', () => {
-      startOrEnd = !startOrEnd
-      return startOrEnd
-        ? '<xmp style="display: inline-block; color: #d56161; margin: 0 3px; font-family: Consolas, Monaco, monospace;">'
-        : '</xmp>'
-    })
+  // 给data里的字符串高亮
+  data = data.map((item) =>
+    attrs.reduce((o, i) => ({ ...o, [i]: firstItem[i] ? highlightText(item[i]) : null }), {}),
+  )
 
-    return (
-      <Typography.Paragraph copyable={{ text: sourceText.replaceAll('`', '') }}>
-        <span style={{ whiteSpace: 'pre' }} dangerouslySetInnerHTML={{ __html }} />
-      </Typography.Paragraph>
-    )
-  }
+  // 给title里的字符串高亮
+  title = highlightText(title)
 
   // 渲染类型
   const renderMap = {
-    descriptions: (
-      <Descriptions
-        size={size}
-        column={1}
-        bordered
-        labelStyle={{ width: '40%' }}
-        style={{ border: 'none' }}
-        contentStyle={{ border: 'none' }}
-      >
-        {data.map((item, index) => (
-          <Descriptions.Item key={index} style={{ fontWeight: 400 }} label={replace(item.label)}>
-            {replace(item.desc)}
-          </Descriptions.Item>
-        ))}
-      </Descriptions>
-    ),
+    descriptions: () => {
+      return (
+        <Descriptions
+          size={size}
+          column={1}
+          bordered
+          labelStyle={{ width: '40%' }}
+          style={{ border: 'none' }}
+          contentStyle={{ border: 'none' }}
+        >
+          {data.map((item, index) => (
+            <Descriptions.Item key={index} style={{ fontWeight: 400 }} label={item.label}>
+              {item.desc}
+            </Descriptions.Item>
+          ))}
+        </Descriptions>
+      )
+    },
+    table: () => {
+      // 生成columns
+      const columns = attrs
+        .map((item) => (firstItem[item] ? { title: item, dataIndex: item } : null))
+        .filter((i) => i)
+      // 给第一列40%的宽度
+      columns[0].width = '40%'
+      return (
+        <Table
+          size={size}
+          dataSource={data}
+          columns={columns}
+          pagination={false}
+          showHeader={showHeader}
+        />
+      )
+    },
   }
 
-  return [
-    <Card size={size} title={title ? replace(title) : null} bodyStyle={{ padding: 0 }}>
-      {renderMap[type]}
-    </Card>,
-  ]
+  return (
+    <Card size={size} title={title || null} bodyStyle={{ padding: 0 }}>
+      {renderMap[type]()}
+    </Card>
+  )
 }
