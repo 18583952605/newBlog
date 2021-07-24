@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Descriptions, Table } from 'antd'
-import { highlightText, str2Array } from '../tools'
+import { checkAttr, highlightText, str2Array } from '../tools'
 import '../style/index.less'
 
 export default (props) => {
@@ -12,13 +12,12 @@ export default (props) => {
     { key: 'desc', label: '描述' },
     { key: 'value', label: '值', isCopy: true },
     { key: 'example', label: '示例', isCopy: true },
+    { key: 'effect', label: '效果' },
+    { key: 'attr', label: '属性' },
   ]
 
   // 转换data
   data = str2Array(data) || []
-
-  // 取第一个
-  const firstItem = data[0] || {}
 
   // example字段，自动标红
   data = data.map((item) => ({ ...item, example: item.example ? `‘${item.example}’` : undefined }))
@@ -28,7 +27,7 @@ export default (props) => {
     return attrs.reduce(
       (o, { key, isCopy }) => ({
         ...o,
-        [key]: firstItem[key] ? highlightText(item[key], isCopy) : null,
+        [key]: checkAttr(data, key) ? highlightText(item[key], isCopy && item[key]) : null,
       }),
       {},
     )
@@ -60,24 +59,13 @@ export default (props) => {
     table: () => {
       // 生成columns
       let columns = attrs
-        .map(({ key, label }) => (firstItem[key] ? { title: label, dataIndex: key } : null))
+        .map(({ key, label }) => (checkAttr(data, key) ? { title: label, dataIndex: key } : null))
         .filter((i) => i)
-
-      // 过长省略
-      // columns = columns.map((item) => ({
-      //   ...item,
-      //   ellipsis: {
-      //     showTitle: false,
-      //   },
-      //   render: address => (
-      //     <Tooltip placement='topLeft' title={address}>
-      //       {address}
-      //     </Tooltip>
-      //   ),
-      // }))
 
       // 给第一列40%的宽度
       columns[0].width = '40%'
+
+      console.log(666, data)
 
       return (
         <Table

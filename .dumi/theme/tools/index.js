@@ -47,3 +47,8 @@ export const highlightText = (text = '', isCopy = false, isEllipsis = true) => {
     </Typography.Paragraph>
   )
 }
+
+// 判断是否有包含指定属性的对象
+export const checkAttr = (list = [], attr = '') => {
+  return list.some((item) => item[attr])
+}
