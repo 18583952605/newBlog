@@ -7,6 +7,10 @@ html[data-prefers-color='dark'] {
 
 // 优化CardPro
 .markdown {
+  .ant-card {
+    border-top: none;
+  }
+
   .ant-card-head {
     padding-left: 14px !important;
   }
@@ -20,19 +24,24 @@ html[data-prefers-color='dark'] {
       margin: -2px;
     }
 
-    // Card内嵌Table，优化边框显示
-    .ant-table-content > table {
-      border: none !important;
+    .ant-table-content {
+      // 内容过宽可滚动
+      overflow: auto;
 
-      .ant-table-row .ant-table-cell:first-child {
-        background: #fafafa;
-      }
+      // Card内嵌Table，优化边框显示
+      table {
+        border: none !important;
 
-      .ant-table-cell {
-        border-top: solid 0.5px #eee !important;
-        border-bottom: none !important;
-        border-left: none !important;
-        border-right: none !important;
+        .ant-table-row .ant-table-cell:first-child {
+          background: #fafafa;
+        }
+
+        .ant-table-cell {
+          border-top: solid 0.5px #eee !important;
+          border-bottom: none !important;
+          border-left: none !important;
+          border-right: none !important;
+        }
       }
     }
   }
@@ -57,4 +66,25 @@ html[data-prefers-color='dark'] {
       visibility: visible;
     }
   }
+}
+
+// 滚动条凹槽的颜色，还可以设置边框属性
+::-webkit-scrollbar-track-piece {
+  background-color: #f8f8f8;
+}
+
+// 滚动条的宽度
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+// 滚动条的设置
+::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ddd;
 }

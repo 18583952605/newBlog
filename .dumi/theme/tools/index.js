@@ -20,7 +20,7 @@ export const str2Array = (str = '') => {
 }
 
 // 将字符串中‘’包含的部分，显示高亮颜色
-export const highlightText = (text = '') => {
+export const highlightText = (text = '', isCopy = false, isEllipsis = true) => {
   const sourceText = text.trim()
   const __html = replaceByRules(sourceText, [
     [
@@ -31,12 +31,17 @@ export const highlightText = (text = '') => {
   ])
   return (
     <Typography.Paragraph
-      copyable={{
-        text: replaceByRules(sourceText, [
-          ['‘', ''],
-          ['’', ''],
-        ]),
-      }}
+      ellipsis={isEllipsis ? { rows: 1 } : false}
+      copyable={
+        isCopy
+          ? {
+              text: replaceByRules(sourceText, [
+                ['‘', ''],
+                ['’', ''],
+              ]),
+            }
+          : undefined
+      }
     >
       <span style={{ whiteSpace: 'pre' }} dangerouslySetInnerHTML={{ __html }} />
     </Typography.Paragraph>

@@ -10,8 +10,8 @@ export default (props) => {
   const attrs = [
     { key: 'label', label: '标签' },
     { key: 'desc', label: '描述' },
-    { key: 'value', label: '值' },
-    { key: 'example', label: '示例' },
+    { key: 'value', label: '值', isCopy: true },
+    { key: 'example', label: '示例', isCopy: true },
   ]
 
   // 转换data
@@ -20,16 +20,22 @@ export default (props) => {
   // 取第一个
   const firstItem = data[0] || {}
 
+  // example字段，自动标红
+  data = data.map((item) => ({ ...item, example: item.example ? `‘${item.example}’` : undefined }))
+
   // 给data里的字符串高亮
   data = data.map((item) => {
     return attrs.reduce(
-      (o, { key }) => ({ ...o, [key]: firstItem[key] ? highlightText(item[key]) : null }),
+      (o, { key, isCopy }) => ({
+        ...o,
+        [key]: firstItem[key] ? highlightText(item[key], isCopy) : null,
+      }),
       {},
     )
   })
 
   // 给title里的字符串高亮
-  title = highlightText(title)
+  title = title ? highlightText(title) : null
 
   // 渲染类型
   const renderMap = {
@@ -53,9 +59,22 @@ export default (props) => {
     },
     table: () => {
       // 生成columns
-      const columns = attrs
+      let columns = attrs
         .map(({ key, label }) => (firstItem[key] ? { title: label, dataIndex: key } : null))
         .filter((i) => i)
+
+      // 过长省略
+      // columns = columns.map((item) => ({
+      //   ...item,
+      //   ellipsis: {
+      //     showTitle: false,
+      //   },
+      //   render: address => (
+      //     <Tooltip placement='topLeft' title={address}>
+      //       {address}
+      //     </Tooltip>
+      //   ),
+      // }))
 
       // 给第一列40%的宽度
       columns[0].width = '40%'
@@ -73,7 +92,7 @@ export default (props) => {
   }
 
   return (
-    <Card size={size} title={title || null} bodyStyle={{ padding: 0 }}>
+    <Card size={size} title={title} bodyStyle={{ padding: 0 }}>
       {renderMap[type]()}
     </Card>
   )
