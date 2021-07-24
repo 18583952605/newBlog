@@ -5,5 +5,5 @@ export default defineConfig({
   mode: 'site',
   locales: [['zh-CN', '中文']],
   // plugins: ['./plugins/handle.ts'],
-  publicPath: process.env.NODE_ENV === 'development' ? undefined : './newBlog/',
+  // publicPath: process.env.NODE_ENV === 'development' ? undefined : './newBlog/',
 })
