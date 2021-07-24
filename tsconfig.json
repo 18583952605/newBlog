@@ -7,7 +7,7 @@
     "jsx": "react",
     "esModuleInterop": true,
     "sourceMap": true,
-    "baseUrl": "./newBlog/",
+    "baseUrl": "./",
     "strict": true,
     "paths": {
       "@/*": ["src/*"],
