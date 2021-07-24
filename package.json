@@ -1,6 +1,7 @@
 {
   "private": true,
-  "name": "dumi-app",
+  "name": "new-blog",
+  "homepage": "https://newBlog.github.io/",
   "scripts": {
     "start": "dumi dev",
     "build": "dumi build",
