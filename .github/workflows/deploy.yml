@@ -19,9 +19,9 @@ jobs:
 
       # 部署
       - name: Deploy
-        uses: peaceiris/actions-pages@v2.5.0
+        uses: peaceiris/actions-gh-pages@v2.5.0
         env:
           PERSONAL_TOKEN: ${{ secrets.DEPLOY_KEY }}
-          PUBLISH_BRANCH: pages
+          PUBLISH_BRANCH: gh-pages
           # 生成文件的目录
           PUBLISH_DIR: ./build
