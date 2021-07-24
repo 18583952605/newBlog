@@ -9,11 +9,12 @@ export default (props) => {
   // 支持的字段
   const attrs = [
     { key: 'label', label: '标签' },
+    { key: 'attr', label: '属性' },
     { key: 'desc', label: '描述' },
     { key: 'value', label: '值', isCopy: true },
     { key: 'example', label: '示例', isCopy: true },
     { key: 'effect', label: '效果' },
-    { key: 'attr', label: '属性' },
+    { key: 'attach', label: '附加' },
   ]
 
   // 转换data
