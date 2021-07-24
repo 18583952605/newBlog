@@ -3,52 +3,48 @@ title: Body标签
 order: 3
 ---
 
-<Table></Table>
-
 <PageHeaderPro 
   title="body标签"  
-  sub_title="一般用于定义页面的主体部分，包含文档的所有内容（如文本、超链接、图片、列表和表格等）" 
+  sub_title="一般定义页面的主体部分，包含页面的所有内容（如文本、超链接、图片、列表和表格等）" 
 />
 
-## 文本类标签
+### 3.1 文本类标签
 
-::: tip
-| 标签 | 值 | 属性 |
-|:----------------------:|:-----------------------:|:----:|
-| <strong>加粗</strong> | `<strong>加粗</strong>` |
-| <em>斜体</em> | `<em>斜体</em>` |
-| <del>删除线</del> | `<del>删除线</del>` |
-| <ins>下划线</ins> | `<ins>下划线</ins>` |
-| | |
-| <sup>上标</sup> | `<sup>上标</sup>` |
-| <sub>下标</sub> | `<sub>下标</sub>` |
-|||
-| 换行 | `<br />` |
-| 分隔线 | `<hr />` |
-|||
-| 标题 | `<h1~h6>标题</h1~h6>` | dir |
-| 段落 | `<p>段落</p>` | align |
-:::
+<CardPro
+  type="table"
+  data="[
+    {desc: `加粗`, example: `<strong>加粗</strong>`, effect: `<strong>加粗</strong>` },
+    {desc: `斜体`, example: `<em>斜体</em>`, effect: `<em>斜体</em>` },
+    {desc: `删除线`, example: `<del>删除线</del>`, effect: `<del>删除线</del>` },
+    {desc: `下划线`, example: `<ins>下划线</ins>`, effect: `<ins>下划线</ins>` },
+    {},
+    {desc: `上标`, example: `<sup>上标</sup>`, effect: `<sup>上标</sup>` },
+    {desc: `下标`, example: `<sub>下标</sub>`, effect: `<sub>下标</sub>` },
+    {},
+    {desc: `换行`, example: `<br />`, effect: `<br />` },
+    {desc: `分隔线`, example: `<hr />`, effect: `<hr />` },
+    {},
+    {desc: `标题`, example: `<h1~h6>标题</h1~h6>`, effect: `<h5>标题</h5>`, attach: `dir` },
+    {desc: `段落`, example: `<p>段落</p>`, effect: `<p>段落</p>`, attach: `align` },
+  ]"
+/>
 
-## 3.2 图像标签
-
-::: tip
+### 3.2 图像标签
 
 ```html
-<img src="图片路径" alt="提示" />
+<img src="图片路径" alt="提示" title="标题" />
 ```
 
-| 属性名 |           含义           |           值           |
-| :----: | :----------------------: | :--------------------: |
-|  src   |         图片路径         |  `src="img/logo.jpg"`  |
-|  alt   | 图片显示失败时的提示文本 |  `alt="这是一张图片"`  |
-| title  |   鼠标悬浮时的提示文本   | `title="这是一张图片"` |
-
-:::
+<CardPro
+  type="table"
+  data="[
+    {attr: `src`, desc: `图片路径`, example: `src='img/logo.jpg'` },
+    {attr: `alt`, desc: `图片显示失败时的提示文本`, example: `alt='这是一张图片'` },
+    {attr: `title`, desc: `鼠标悬浮时的提示文本`, example: `title='这是一张图片'` }
+  ]"
+/>
 
 ## 3.3 链接标签
-
-::: tip
 
 ```html
 <!--普通链接-->
@@ -73,8 +69,6 @@ order: 3
 |          |                本窗口打开                 |      `target="_self"`       |
 | download | 将 href 地址的文件下载并以 file_name 命名 |   `download="file_name"`    |
 |   rel    |               禁止蜘蛛抓取                |      `rel="nofollow"`       |
-
-:::
 
 ## 3.4 列表标签
 

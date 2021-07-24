@@ -14,7 +14,7 @@ export const str2Array = (str = '') => {
   try {
     data = eval(replaceByRules(str, [['\\n', '']]))
   } catch (err) {
-    console.error('解析data失败', err, str)
+    data = [{ desc: str }]
   }
   return data
 }
