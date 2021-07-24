@@ -19,7 +19,7 @@ jobs:
 
       # 部署
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v2.5.0
+        uses: peaceiris/actions-pages@v2.5.0
         env:
           PERSONAL_TOKEN: ${{ secrets.DEPLOY_KEY }}
           PUBLISH_BRANCH: pages
