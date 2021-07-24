@@ -20,10 +20,8 @@ jobs:
       # 部署
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        env:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_branch: gh-pages
           # 生成文件的目录
           publish_dir: ./public
