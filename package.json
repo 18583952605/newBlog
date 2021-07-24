@@ -1,7 +1,6 @@
 {
   "private": true,
   "name": "new-blog",
-  "homepage": "https://18583952605.github.io/newBlog/",
   "scripts": {
     "start": "dumi dev",
     "build": "dumi build",
@@ -10,9 +9,6 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "lint-staged": {
     "*.{js,jsx,less,md,json}": [
       "prettier --write"
