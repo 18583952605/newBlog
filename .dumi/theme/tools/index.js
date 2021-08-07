@@ -8,6 +8,11 @@ export const replaceByRules = (text = '', rules = []) => {
   return text
 }
 
+// 字符串转为对象
+export const str2Object = (str = '') => {
+  return JSON.parse(eval(`JSON.stringify(${replaceByRules(str, [['\\n', '']])})`))
+}
+
 // 字符串转为数组
 export const str2Array = (str = '') => {
   let data = []

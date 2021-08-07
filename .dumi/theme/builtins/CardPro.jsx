@@ -24,7 +24,10 @@ export default (props) => {
   ]
 
   // 转换data
-  data = str2Array(data) || []
+  if (typeof data === 'string') {
+    data = str2Array(data) || []
+  }
+
   // example字段，自动标红
   let sourceData = data.map((item) => ({ ...item, example: item.example ? `‘${item.example}’` : undefined }))
   // 给data里的字符串高亮
@@ -88,7 +91,9 @@ export default (props) => {
       }
 
       // 给第一列40%的宽度
-      columns[0].width = '30%'
+      if (columns[0]) {
+        columns[0].width = '30%'
+      }
 
       return (
         <Table
