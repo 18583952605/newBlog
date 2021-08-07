@@ -1,6 +1,6 @@
 ---
 hero:
-  title: New Note
+  title: New Blog
   desc: 前端界的一名小学生~
   actions:
     - text: 开始学习

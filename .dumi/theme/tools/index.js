@@ -22,10 +22,11 @@ export const str2Array = (str = '') => {
 // 将字符串中‘’包含的部分，显示高亮颜色
 export const highlightText = (text = '', isCopy = false, isEllipsis = true) => {
   const sourceText = text.trim()
+
   const __html = replaceByRules(sourceText, [
     [
       '‘',
-      '<xmp style="display: inline-block; color: #d56161; margin: 0 3px; font-family: Consolas, Monaco, monospace;">',
+      '<xmp style="display: inline-block; color: #d56161; background-color: #f6f7f9; margin: 0 3px; font-family: Consolas, Monaco, monospace;">',
     ],
     ['’', '</xmp>'],
   ])
@@ -35,11 +36,11 @@ export const highlightText = (text = '', isCopy = false, isEllipsis = true) => {
       copyable={
         isCopy
           ? {
-              text: replaceByRules(sourceText, [
-                ['‘', ''],
-                ['’', ''],
-              ]),
-            }
+            text: replaceByRules(sourceText, [
+              ['‘', ''],
+              ['’', ''],
+            ]),
+          }
           : undefined
       }
     >

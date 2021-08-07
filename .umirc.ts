@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi'
 
 export default defineConfig({
-  title: 'newNote',
+  title: 'newBlog',
   mode: 'site',
   history: { type: 'hash' },
   locales: [['zh-CN', '中文']],

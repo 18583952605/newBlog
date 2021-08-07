@@ -27,6 +27,7 @@
     "@ant-design/icons": "^4.6.2",
     "antd": "^4.16.6",
     "copy-to-clipboard": "^3.3.1",
+    "lodash": "^4.17.21",
     "react": "^16.14.0",
     "react-markdown": "^6.0.2"
   }
