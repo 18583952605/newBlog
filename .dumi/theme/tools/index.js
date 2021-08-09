@@ -26,6 +26,10 @@ export const str2Array = (str = '') => {
 
 // 将字符串中‘’包含的部分，显示高亮颜色
 export const highlightText = (text = '', isCopy = false, isEllipsis = true) => {
+  if (typeof text !== 'string') {
+    return text
+  }
+
   const sourceText = text.trim()
 
   const __html = replaceByRules(sourceText, [

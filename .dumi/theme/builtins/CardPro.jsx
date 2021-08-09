@@ -9,7 +9,7 @@ export default (props) => {
     type = 'table',
     title = '',
     data = '[]',
-    showheader = false,
+    showHeader = false,
   } = props
 
   // 支持的字段
@@ -101,7 +101,7 @@ export default (props) => {
           dataSource={sourceData}
           columns={columns}
           pagination={false}
-          showHeader={Boolean(showheader)}
+          showHeader={Boolean(showHeader)}
         />
       )
     },

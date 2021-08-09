@@ -4,10 +4,13 @@ import { highlightText, str2Array } from '../tools'
 import '../style/index.less'
 
 export default (props) => {
-  let { cardTitle = '操作步骤', size = 'small', data = '[]' } = props
+  let { cardTitle = '', size = 'small', data = '[]' } = props
 
   // 转换data
-  data = str2Array(data) || []
+  // 转换data
+  if (typeof data === 'string') {
+    data = str2Array(data) || []
+  }
 
   if (typeof data[0] === 'string') {
     data = data.map((item, index) => ({ title: `第${index + 1}步`, content: highlightText(item) }))
