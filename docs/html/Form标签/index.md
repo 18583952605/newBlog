@@ -5,29 +5,45 @@ order: 4
 
 ## 4.1 input 标签
 
-::: tip 单行文本框
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '单行文本框',
+    }
+  }"
+/>
 
 ```html
 <input type="text" />
 ```
 
-:::
-
-::: tip 密码输入框
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '密码输入框',
+    }
+  }"
+/>
 
 ```html
 <input type="password" />
 ```
 
-:::
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '隐藏文本框',
+    }
+  }"
+/>
 
-::: tip 隐藏文本框
 
 ```html
 <input type="hidden" />
 ```
-
-:::
 
 ::: tip 属性
 | 属性名 | 含义 | 值 |
@@ -45,63 +61,98 @@ order: 4
 | autocomplete| 在编辑框双击时弹出输入历史 | `autocomplete="off/on"` |
 :::
 
-::: tip 单选框
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '单选框',
+    }
+  }"
+/>
 
 ```html
 <input type="radio" name="sex" value="boy" [checked] />
 <input type="radio" name="sex" value="girl" />
 ```
 
-:::
-
-::: tip 复选框
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '复选框',
+    }
+  }"
+/>
 
 ```html
 <input type="checkbox" name="aihao[]" value="yinyue" [checked] />
 <input type="checkbox" name="aihao[]" value="meishu" />
 ```
 
-:::
-
-::: tip 普通按钮
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '普通按钮',
+    }
+  }"
+/>
 
 ```html
 <input type="button" />
 ```
 
-:::
-
-::: tip 重置按钮
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '重置按钮',
+    }
+  }"
+/>
 
 ```html
 <input type="reset" />
 ```
 
-:::
-
-::: tip 提交按钮
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '提交按钮',
+    }
+  }"
+/>
 
 ```html
 <input type="submit" />
 ```
 
-:::
-
-::: tip 图形按钮
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '图形按钮',
+    }
+  }"
+/>
 
 ```html
 <input type="image" src="图片路径" alt="[图片显示失败的提示文本]" />
 ```
 
-:::
-
-::: tip 文件域
+<ComponentPro
+  data="{
+    component: 'CardPro',
+    props: {
+      title: '文件域',
+    }
+  }"
+/>
 
 ```html
 <input type="file" [multiple] [accept="image/gif,image/jpeg" ] />
 ```
-
-:::
 
 ::: tip 更多类型
 | 类型 | |
@@ -115,9 +166,7 @@ order: 4
 | 颜色 | `<input type="color" />`|
 :::
 
-## 4.2 label 标签
-
-::: tip
+### 4.2 label 标签
 
 ```html
 <!--点击手机号码，光标进入输入框，有两种方法-->
@@ -125,21 +174,14 @@ order: 4
 (2) <label for="num">手机号码：</label><input type="text" id="num"></input>
 ```
 
-:::
 
-## 4.3 textarea 文本域
-
-::: tip
+### 4.3 textarea 文本域
 
 ```html
 <textarea cols="[每行的字符数]" rows="[行数]">这里写内容</textarea>
 ```
 
-:::
-
-## 4.4 select 下拉列表
-
-::: tip
+### 4.4 select 下拉列表
 
 ```html
 <select name="city" [multiple] [size]>
@@ -157,11 +199,8 @@ order: 4
 |   size   | 显示的表项数 | `size="3"` |
 | selected |   默认选中   | `selected` |
 
-:::
 
-## 4.5 datalist 数据列表
-
-::: tip
+### 4.5 datalist 数据列表
 
 ```html
 <input type="text" list="list_id" />
@@ -173,11 +212,7 @@ order: 4
 </datalist>
 ```
 
-:::
-
-## 4.6 form 表单域
-
-::: tip
+### 4.6 form 表单域
 
 ```html
 <form action="./one.php" method="get">
@@ -192,5 +227,3 @@ order: 4
 |   enctype    |                                   编码方式 (上传文件时必须)                                    | `enctype="multipart/form-data"` |
 | autocomplete |                      双击弹出历史<br>自动完成是在编辑框双击时弹出输入历史                      |     `autocomplete="off/on"`     |
 |  novalidate  | 不对用户输入的内容进行验证<br>例如不验证 email 类型的 input 框<br>用户输入的内容是否为邮箱地址 |          `novalidate`           |
-
-:::
