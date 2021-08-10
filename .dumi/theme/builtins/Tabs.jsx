@@ -7,15 +7,21 @@ export default (props) => {
   let { cardTitle = '', size = 'small', data = '[]' } = props
 
   // 转换data
-  // 转换data
   if (typeof data === 'string') {
     data = str2Array(data) || []
   }
 
   if (typeof data[0] === 'string') {
-    data = data.map((item, index) => ({ title: `第${index + 1}步`, content: highlightText(item) }))
+    data = data.map((item, index) => ({
+      title: `第${index + 1}步`,
+      content: highlightText(item),
+    }))
+
   } else if (typeof data[0] === 'object') {
-    data = data.map(item => ({ title: highlightText(item.title), content: highlightText(item.content) }))
+    data = data.map(item => ({
+      title: highlightText(item.title),
+      content: highlightText(item.content),
+    }))
   }
 
   const tabs = (

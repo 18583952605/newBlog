@@ -17,11 +17,16 @@ export const str2Object = (str = '') => {
 export const str2Array = (str = '') => {
   let data = []
   try {
-    data = eval(replaceByRules(str, [['\\n', '']]))
+    data = str2Object(str)
   } catch (err) {
     data = [{ desc: str }]
   }
   return data
+}
+
+// 判断是否有包含指定属性的对象，第三个参数可以指定具体的值
+export const checkAttr = (list = [], attr = '', value) => {
+  return list.some((item) => value === undefined ? item[attr] : item[attr] === value)
 }
 
 // 将字符串中‘’包含的部分，显示高亮颜色
@@ -56,9 +61,4 @@ export const highlightText = (text = '', isCopy = false, isEllipsis = true) => {
       <span style={{ whiteSpace: 'pre' }} dangerouslySetInnerHTML={{ __html }} />
     </Typography.Paragraph>
   )
-}
-
-// 判断是否有包含指定属性的对象
-export const checkAttr = (list = [], attr = '') => {
-  return list.some((item) => item[attr])
 }

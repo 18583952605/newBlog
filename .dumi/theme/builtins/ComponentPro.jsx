@@ -1,12 +1,16 @@
 import React from 'react'
-import { str2Object } from '../tools'
 
 import CardPro from './CardPro'
 import Tabs from './Tabs'
+import { Collapse } from 'antd'
+
+import { str2Object } from '../tools'
 
 const components = {
   CardPro,
   Tabs,
+  Collapse,
+  'Collapse.Panel': Collapse.Panel,
 }
 
 const jsonToVirtualDom = (components, o) => {

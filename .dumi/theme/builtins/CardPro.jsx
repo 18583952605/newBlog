@@ -10,6 +10,7 @@ export default (props) => {
     title = '',
     data = '[]',
     showHeader = false,
+    pagination = false,
   } = props
 
   // 支持的字段
@@ -29,13 +30,14 @@ export default (props) => {
   }
 
   // example字段，自动标红
-  let sourceData = data.map((item) => ({ ...item, example: item.example ? `‘${item.example}’` : undefined }))
+  let dataSource = data.map(item => ({ ...item, example: item.example ? `‘${item.example}’` : undefined }))
+
   // 给data里的字符串高亮
-  sourceData = sourceData.map((item) => {
+  dataSource = dataSource.map(item => {
     return attrs.reduce(
       (o, { key, isCopy }) => ({
         ...o,
-        [key]: checkAttr(sourceData, key) ? highlightText(item[key], isCopy && item[key]) : null,
+        [key]: checkAttr(dataSource, key) ? highlightText(item[key], isCopy && item[key]) : null,
       }),
       {},
     )
@@ -67,7 +69,7 @@ export default (props) => {
     table: () => {
       // 生成columns
       let columns = attrs
-      .map((item) => (checkAttr(sourceData, item.key) ? { title: item.label, dataIndex: item.key, ...item } : null))
+      .map((item) => (checkAttr(dataSource, item.key) ? { title: item.label, dataIndex: item.key, ...item } : null))
       .filter((i) => i)
       .map(item => !item.isMerge ? item : {
         ...item,
@@ -95,12 +97,17 @@ export default (props) => {
         columns[0].width = '30%'
       }
 
+      // 没有数据不显示表格
+      if (dataSource.length === 0) {
+        return null
+      }
+
       return (
         <Table
           size={size}
-          dataSource={sourceData}
+          dataSource={dataSource}
           columns={columns}
-          pagination={false}
+          pagination={pagination}
           showHeader={Boolean(showHeader)}
         />
       )
