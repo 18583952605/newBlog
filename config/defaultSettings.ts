@@ -2,8 +2,8 @@ import {Settings as LayoutSettings} from '@ant-design/pro-layout'
 
 export default {
   navTheme: 'light',
-  primaryColor: '#1890ff',
-  layout: 'mix',
+  primaryColor: '#4569d4',
+  layout: 'top',
   contentWidth: 'Fluid',
   fixedHeader: false,
   fixSiderbar: true,

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 export default (): React.ReactNode => {
   return (
-    <div>Welcome</div>
+    <div>Head标签</div>
   )
 }

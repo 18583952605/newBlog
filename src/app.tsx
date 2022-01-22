@@ -1,4 +1,5 @@
-import RightContent from '@/components/RightContent'
+import {history} from 'umi'
+import routes from '../config/routes'
 import Footer from '@/components/Footer'
 
 export const layout = () => {
@@ -7,8 +8,17 @@ export const layout = () => {
     disableContentMargin: false,
     menuHeaderRender: undefined,
     unAccessible: <div>unAccessible</div>,
-    rightContentRender: () => <RightContent/>,
+    rightContentRender: () => null,
     footerRender: () => <Footer/>,
-    onPageChange: () => undefined
+    onPageChange: (pathInfo: any) => {
+      const {pathname, state} = pathInfo
+      // @ts-ignore
+      const {routes: childrenRoutes} = routes.find(item => item.path === `.${pathname}`) || {}
+      if (state?.ok || !childrenRoutes?.length) {
+        return
+      }
+      const targetPath = `${pathname}/${childrenRoutes?.[0].path}`.replaceAll('./', '')
+      history.push(targetPath, {ok: true})
+    }
   }
 }

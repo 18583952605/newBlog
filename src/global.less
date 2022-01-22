@@ -13,6 +13,7 @@ body,
 .ant-layout {
   min-height: 100vh;
 }
+
 .ant-pro-sider.ant-layout-sider.ant-pro-sider-fixed {
   left: unset;
 }
@@ -36,11 +37,13 @@ ol {
   .ant-table {
     width: 100%;
     overflow-x: auto;
+
     &-thead > tr,
     &-tbody > tr {
       > th,
       > td {
         white-space: pre;
+
         > span {
           display: block;
         }
@@ -49,9 +52,34 @@ ol {
   }
 }
 
-// 兼容IE11
 @media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
   body .ant-design-pro > .ant-layout {
     min-height: 100vh;
+  }
+}
+
+// 导航栏高度
+.ant-layout-header {
+  height: 64px !important;
+  line-height: 64px !important;
+
+  // 导航栏靠右
+  .ant-menu.ant-menu-root {
+    justify-content: flex-end;
+    margin-right: 30px;
+
+    // 导航栏项目hover上去后,不显示底边框
+    .ant-menu-item {
+      &:hover::after {
+        display: none;
+      }
+    }
+  }
+
+  // 网站标题字体增大
+  .ant-pro-top-nav-header-main-left {
+    h1 {
+      font-size: 22px;
+    }
   }
 }
