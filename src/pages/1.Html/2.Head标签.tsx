@@ -1,7 +1,10 @@
 import React from 'react'
+import {Page} from '../../components'
 
 export default (): React.ReactNode => {
   return (
-    <div>Head标签</div>
+    <Page>
+      <div>Head标签</div>
+    </Page>
   )
 }

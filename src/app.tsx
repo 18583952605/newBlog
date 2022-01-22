@@ -1,6 +1,5 @@
 import {history} from 'umi'
 import routes from '../config/routes'
-import Footer from '@/components/Footer'
 
 export const layout = () => {
   return {
@@ -9,7 +8,7 @@ export const layout = () => {
     menuHeaderRender: undefined,
     unAccessible: <div>unAccessible</div>,
     rightContentRender: () => null,
-    footerRender: () => <Footer/>,
+    footerRender: () => null,
     onPageChange: (pathInfo: any) => {
       const {pathname, state} = pathInfo
       // @ts-ignore
