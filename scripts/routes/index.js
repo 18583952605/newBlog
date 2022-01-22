@@ -64,6 +64,7 @@ const getRoutes = (page_, topPath = '', ignoreFile = false, menu = false) => {
       name: handleName(name),
       component: `.${topPath}/${name}`,
       menu,
+      wrappers: ['@/components/Page'],
     }
   }))
 
