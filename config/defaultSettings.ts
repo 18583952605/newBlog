@@ -1,9 +1,6 @@
-import {Settings as LayoutSettings} from '@ant-design/pro-layout';
+import {Settings as LayoutSettings} from '@ant-design/pro-layout'
 
-const Settings: LayoutSettings & {
-  pwa?: boolean;
-  logo?: string;
-} = {
+export default {
   navTheme: 'light',
   primaryColor: '#1890ff',
   layout: 'mix',
@@ -11,10 +8,8 @@ const Settings: LayoutSettings & {
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Ant Design Pro',
+  title: 'newNote',
   pwa: false,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: '/icon.webp',
   iconfontUrl: '',
-};
-
-export default Settings;
+} as LayoutSettings & { pwa?: boolean; logo?: string; }

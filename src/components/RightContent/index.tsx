@@ -1,16 +1,14 @@
-import {Space} from 'antd';
-import {QuestionCircleOutlined} from '@ant-design/icons';
-import React from 'react';
-import HeaderSearch from '../HeaderSearch';
-import styles from './index.less';
+import {Space} from 'antd'
+import HeaderSearch from '../HeaderSearch'
+import styles from './index.less'
 
-const GlobalHeaderRight: React.FC = () => {
-
+export default () => {
   const {navTheme, layout} = {navTheme: 'dark', layout: 'top'}
-  let className = styles.right;
+
+  let className = styles.right
 
   if ((navTheme === 'dark' && layout === 'top') || layout === 'mix') {
-    className = `${styles.right}  ${styles.dark}`;
+    className = `${styles.right}  ${styles.dark}`
   }
 
   return (
@@ -18,14 +16,14 @@ const GlobalHeaderRight: React.FC = () => {
       <HeaderSearch
         className={`${styles.action} ${styles.search}`}
         placeholder="站内搜索"
-        defaultValue="umi ui"
+        defaultValue=""
         options={[
           {
             label: <a href="https://umijs.org/zh/guide/umi-ui.html">umi ui</a>,
             value: 'umi ui',
           },
           {
-            label: <a href="next.ant.design">Ant Design</a>,
+            label: <a href="./">Ant Design</a>,
             value: 'Ant Design',
           },
           {
@@ -38,19 +36,9 @@ const GlobalHeaderRight: React.FC = () => {
           },
         ]}
         onSearch={value => {
-          console.log('input', value);
+          console.log('input', value)
         }}
       />
-      <span
-        className={styles.action}
-        onClick={() => {
-          window.open('https://pro.ant.design/docs/getting-started');
-        }}
-      >
-        <QuestionCircleOutlined/>
-      </span>
     </Space>
-  );
-};
-
-export default GlobalHeaderRight;
+  )
+}
