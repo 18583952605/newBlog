@@ -1,0 +1,19 @@
+.container {
+  &:not(:first-child) {
+    margin: 50px 0;
+  }
+
+  .h2 {
+    a {
+      color: rgba(0, 0, 0, 0.85);
+    }
+
+    &:hover::before {
+      content: '#';
+      color: #4569d4;
+      margin-right: 5px;
+      position: absolute;
+      transform: translateX(-20px);
+    }
+  }
+}

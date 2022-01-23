@@ -1,9 +1,11 @@
+@import '~antd/dist/antd.css';
 @import '~antd/es/style/themes/default.less';
 
 html,
 body,
 #root {
   height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'
 }
 
 .colorWeak {
@@ -11,7 +13,7 @@ body,
 }
 
 .ant-layout {
-  min-height: 100vh;
+  //min-height: 100vh;
 }
 
 .ant-pro-sider.ant-layout-sider.ant-pro-sider-fixed {
@@ -58,7 +60,7 @@ ol {
   }
 }
 
-// 导航栏高度
+// 导航栏
 .ant-layout-header {
   height: 64px !important;
   line-height: 64px !important;
@@ -76,6 +78,11 @@ ol {
     }
   }
 
+  // 导航栏阴影
+  .ant-pro-top-nav-header {
+    box-shadow: 0 8px 24px -2px rgba(0, 0, 0, 0.05);
+  }
+
   // 网站标题字体增大
   .ant-pro-top-nav-header-main-left {
     h1 {
@@ -84,17 +91,57 @@ ol {
   }
 }
 
-// 主题区域
+// 主体区域
 .ant-layout-content {
   margin: 0 !important;
 }
 
-// 菜单栏
-.ant-menu {
-  height: 100%;
+// 滚动条凹槽的颜色，还可以设置边框属性
+::-webkit-scrollbar-track-piece {
+  background-color: #f8f8f8;
+}
 
-  // 菜单栏展开箭头
-  .ant-menu-submenu-arrow {
-    display: none;
+// 滚动条的宽度
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  display: none;
+}
+
+// 滚动条的设置
+::-webkit-scrollbar-thumb {
+  background-color: #f6f6f6;
+  background-clip: padding-box;
+}
+
+// 滚动条的设置
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ddd;
+}
+
+
+// 夜间模式
+html[data-prefers-color='dark'] {
+  //@import '~antd/dist/antd.dark.less';
+}
+
+// 优化复制按钮的样式
+.ant-typography {
+  margin-bottom: 0 !important;
+}
+
+// 隐藏复制按钮，移入显示
+.ant-descriptions-item-label,
+.ant-descriptions-item-content,
+.ant-table-cell,
+.ant-card-head-title {
+  .anticon.anticon-copy {
+    visibility: hidden;
+  }
+
+  :hover {
+    .anticon.anticon-copy {
+      visibility: visible;
+    }
   }
 }

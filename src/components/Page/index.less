@@ -1,0 +1,55 @@
+.row {
+  background-color: #fff;
+  height: calc(100vh - 66px);
+  overflow: hidden;
+}
+
+.col {
+  padding: 10px;
+  height: 100%;
+  overflow: auto;
+}
+
+.menu {
+  margin-top: 40px;
+
+  :global {
+    .ant-menu {
+      height: 100%;
+
+      // 子菜单不显示展开箭头
+      .ant-menu-submenu-arrow {
+        display: none;
+      }
+
+      // 菜单栏文字偏右30px
+      .ant-menu-title-content {
+        padding-left: 30px;
+      }
+    }
+  }
+}
+
+.content {
+  width: 100%;
+  padding: 30px 40px;
+}
+
+.anchorList {
+  margin-top: 40px;
+  border-left: solid 2px #ebedf1;
+
+  a {
+    display: block;
+    font-size: 13px;
+    color: #454d64;
+    padding: 5px 0 5px 20px;
+
+    &.active {
+      color: #4569d4;
+      border-left: solid 2px #4569d4;
+      position: relative;
+      left: -2px
+    }
+  }
+}

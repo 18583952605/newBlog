@@ -1,11 +1,11 @@
 import {useMemo} from 'react'
-import {Menu} from 'antd';
-import {history, Link} from 'umi';
-import routes from '../../../../config/routes';
+import {history, Link} from 'umi'
+import {Menu} from 'antd'
+import routes from '../../../../config/routes'
+import styles from '../index.less'
 
 export default () => {
-  const {pathname} = history.location
-  const routePath = pathname.split('/')
+  const routePath = history.location.pathname.split('/')
 
   // @ts-ignore
   const {routes: childrenRoutes = []} = routes.find(item => item.path === `./${routePath[1]}`) || {}
@@ -26,21 +26,26 @@ export default () => {
       openKeys.push(path)
       return (
         <Menu.SubMenu key={path} title={name}>
-          {routes?.map((item) => {
+          {routes?.map(item => {
+            // @ts-ignore
             if (!item.path) {
               return null
             }
+            // @ts-ignore
             return item?.routes?.length ? renderSubMenu(item) : renderMenuItem(item)
           })}
         </Menu.SubMenu>
       )
     }
+
     return (
-      <Menu mode='inline' openKeys={openKeys} defaultSelectedKeys={[`./${routePath[2]}`]}>
-        {childrenRoutes.map((item: any) => {
-          return item?.routes?.length ? renderSubMenu(item) : renderMenuItem(item)
-        })}
-      </Menu>
+      <div className={styles.menu}>
+        <Menu mode='inline' openKeys={openKeys} defaultSelectedKeys={[`./${routePath[2]}`]}>
+          {childrenRoutes.map((item: any) => {
+            return item?.routes?.length ? renderSubMenu(item) : renderMenuItem(item)
+          })}
+        </Menu>
+      </div>
     )
   }, [childrenRoutes, routePath])
 }

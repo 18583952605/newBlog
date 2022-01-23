@@ -1,10 +1,8 @@
 import routeJson from './routeJson.json';
 
-export const docRoutes = routeJson
-
 export default [
-  {path: '/', redirect: '/welcome'},
+  {path: '/', redirect: '/1.Html/1.标签介绍'},
   {path: '/welcome', name: '欢迎', menu: false, component: 'Welcome'},
-  ...(docRoutes || []),
+  ...(routeJson || []),
   {component: './404'},
 ]

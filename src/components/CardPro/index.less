@@ -1,0 +1,63 @@
+.cardPro {
+  :global {
+    .ant-card {
+      border: 0.1px solid #f0f0f0;
+      border-bottom: none;
+    }
+
+    .ant-card-head {
+      padding-left: 12px !important;
+    }
+
+    .ant-card-body {
+      padding: 0;
+      margin-top: 1px;
+      //overflow: hidden;
+
+      // Card内嵌Desc
+      .ant-descriptions,
+      .ant-descriptions-bordered {
+        //margin: -2px;
+      }
+
+      // Card内嵌Table
+      .ant-table-content {
+        //overflow: auto; // 内容过宽可滚动
+
+        table {
+          //border: none;
+          //border-collapse: collapse;
+
+          th.ant-table-cell {
+            font-weight: bold;
+          }
+
+          .ant-table-cell {
+            //border-width: 1px !important;
+            //max-height: 40px !important;
+            padding: 12px;
+
+            &:not(:last-child) {
+              border-right: solid .1px #f0f0f0;
+            }
+
+            &::before {
+              //display: none !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              //margin-top: 0;
+              //margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
